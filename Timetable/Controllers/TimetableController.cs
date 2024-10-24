@@ -293,7 +293,7 @@ namespace Timetable.Controllers
         public async Task<IActionResult> GetTimetableHospitalAndRoom([FromRoute] int id, [FromRoute] string room, [FromQuery] string? from, [FromQuery] string? to)
         {
             var role = await _authenticationService.GetValidateAsync(HttpContext);
-            if (!role.Contains("Admin") && !role.Contains("Manager"))
+            if (!role.Contains("Admin") && !role.Contains("Manager") && !role.Contains("Doctor"))
             {
                 return Unauthorized();
             }
